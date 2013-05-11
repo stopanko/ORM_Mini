@@ -9,5 +9,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
+  before_save :create_role
+  def create_role
+    self.roles << Role.find_by_name('expectation') if self.roles.first.nil?
+  end
   
 end

@@ -6,7 +6,6 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  
   def update
     authorize! :update, @user, :message => 'Not authorized as an administrator.'
     @user = User.find(params[:id])
@@ -16,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to users_path, :alert => "Unable to update user."
     end
   end
-    
+
   def destroy
     authorize! :destroy, @user, :message => 'Not authorized as an administrator.'
     user = User.find(params[:id])
@@ -26,5 +25,15 @@ class UsersController < ApplicationController
     else
       redirect_to users_path, :notice => "Can't delete yourself."
     end
+  end
+
+  def changeRole
+    user= User.find(params[:user_id])
+    logger.info user.roles.first.id
+    roles=[Role.find(params[:role_id])]
+    user.roles = roles
+    user.save
+    logger.info user.roles.first.id
+    render :nothing => true
   end
 end

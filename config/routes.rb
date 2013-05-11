@@ -5,4 +5,5 @@ ORMMini::Application.routes.draw do
   root :to => "home#index"
   devise_for :users
   resources :users
+  match '/users/changeRole', :controller => 'users', :action => 'changeRole'
 end

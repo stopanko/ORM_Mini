@@ -11,11 +11,8 @@
         %th
     %tbody
       - @users.each do |user|
-        %tr
-          %td= link_to user.name, user
+        %tr{:user_id =>user.id}
+          %td= user.name
           %td= user.email
           %td= user.created_at.to_date
-          %td= user.roles.first.name unless user.roles.first.nil?
-          //%td= form_for.select ("post", "name", Role.all.collect {|role| [ role.name.titleize, role.id ]} )
           %td= select_tag 'state', options_from_collection_for_select(Role.all, 'id', 'name', :selected => user.roles.first.id),:include_blank => (user.roles.first.nil? ?  true : false)
-          //, user.roles.first.nil? ? nil : :selected => user.roles.first.id)
