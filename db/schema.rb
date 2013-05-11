@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130508122750) do
+ActiveRecord::Schema.define(:version => 20130511142925) do
+
+  create_table "comments", :force => true do |t|
+    t.string   "text"
+    t.string   "email"
+    t.integer  "userRequest_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.string   "comment_id"
+  end
+
+  add_index "comments", ["userRequest_id"], :name => "index_comments_on_userRequest_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -23,6 +34,24 @@ ActiveRecord::Schema.define(:version => 20130508122750) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], :name => "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], :name => "index_roles_on_name"
+
+  create_table "statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "user_requests", :force => true do |t|
+    t.string   "code"
+    t.string   "text"
+    t.string   "email"
+    t.string   "name"
+    t.integer  "status_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "user_requests", ["status_id"], :name => "index_user_requests_on_status_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -15,4 +15,7 @@
           %td= user.name
           %td= user.email
           %td= user.created_at.to_date
-          %td= select_tag 'state', options_from_collection_for_select(Role.all, 'id', 'name', :selected => user.roles.first.id),:include_blank => (user.roles.first.nil? ?  true : false)
+          -if user!=current_user
+            %td= select_tag 'state', options_from_collection_for_select(Role.all, 'id', 'name', :selected => user.roles.first.id),:include_blank => (user.roles.first.nil? ?  true : false)
+          -else
+            %td= user.roles.first.name
