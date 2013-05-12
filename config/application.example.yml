@@ -12,4 +12,5 @@ GMAIL_PASSWORD: qwerty1234567
 ADMIN_NAME: babazina
 ADMIN_EMAIL: lesha0-lesha0@mail.ru
 ADMIN_PASSWORD: 55568402
-ROLES: [admin, moderator]
+ROLES: [admin, moderator, expectation]
+STATUSES: [Waiting for Staff Response,Waiting for Customer, On Hold, Completed]

@@ -1,0 +1,14 @@
+%h3 Tickets #{@status.name}
+%ul
+  -Status.all.each do |status|
+    %li
+      =link_to status.name, '/tickets/'+status.link
+.span8
+  %table
+    %thead
+      %tr
+        %th Name
+    %tbody
+      - @tickets.each do |ticket|
+        %tr
+          %td= ticket.name

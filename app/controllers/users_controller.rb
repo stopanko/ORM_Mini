@@ -29,11 +29,10 @@ class UsersController < ApplicationController
 
   def changeRole
     user= User.find(params[:user_id])
-    logger.info user.roles.first.id
     roles=[Role.find(params[:role_id])]
     user.roles = roles
     user.save
-    logger.info user.roles.first.id
+    UserMailer.welcome_email(user).deliver
     render :nothing => true
   end
 end
