@@ -3,7 +3,7 @@ class StatusesController < ApplicationController
     @statuses=Status.all
   end
 
-  def changeStatus
+  def change
     status= Status.find(params[:id])
     status.link=params[:link]
     status.name=params[:name]
@@ -11,13 +11,13 @@ class StatusesController < ApplicationController
     render :nothing => true
   end
 
-  def deleteStatus
+  def delete
     status= Status.find(params[:id])
     status.destroy
     render :nothing => true
   end
 
-  def createStatus
+  def create
     status=Status.new(:name => params[:name], :link => params[:link])
     status.save
     render :text => status.id.to_s

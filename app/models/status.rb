@@ -1,3 +1,3 @@
 class Status < ActiveRecord::Base
-  attr_accessible :name,:link
+  attr_accessible :name, :link
 end

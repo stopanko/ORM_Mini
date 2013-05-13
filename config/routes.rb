@@ -6,9 +6,9 @@ ORMMini::Application.routes.draw do
   devise_for :users
   resources :users
   match '/users/changeRole', :controller => 'users', :action => 'changeRole'
-  match '/statuses/changeStatus', :controller => 'statuses', :action => 'changeStatus'
-  match '/statuses/createStatus', :controller => 'statuses', :action => 'createStatus'
-  match '/statuses/deleteStatus', :controller => 'statuses', :action => 'deleteStatus'
+  match '/statuses/change', :controller => 'statuses', :action => 'change'
+  match '/statuses/create', :controller => 'statuses', :action => 'create'
+  match '/statuses/delete', :controller => 'statuses', :action => 'delete'
   get "/tickets/:page" => "tickets#show"
   match '/statuses', :controller => 'statuses', :action => 'index'
 end

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     roles=[Role.find(params[:role_id])]
     user.roles = roles
     user.save
-    UserMailer.welcome_email(user).deliver
+    UserMailer.role_change_email(user).deliver
     render :nothing => true
   end
 end

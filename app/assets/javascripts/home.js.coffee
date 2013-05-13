@@ -23,7 +23,7 @@ window.save_status = (id)->
   sendData.name = name.val()
   sendData.link = link.val()
   $.ajax({
-    url: "/statuses/changeStatus"
+    url: "/statuses/change"
     method: "post"
     data: sendData
     error: (jqXHR, textStatus, errorThrown)->
@@ -33,9 +33,18 @@ window.delete_status = (id)->
   sendData=new Object()
   sendData.id = id
   $.ajax({
-    url: "/statuses/deleteStatus"
+    url: "/statuses/delete"
     method: "post"
     data: sendData
+    success: ->
+      table = document.getElementById('table')
+      rowCount=table.rows.length
+      for i in [1..rowCount - 2]
+        row = table.rows[i]
+        if(row.getAttribute('status_id').toString() == id.toString())
+          table.deleteRow(i)
+          break
+
     error: (jqXHR, textStatus, errorThrown)->
       alert textStatus + " : " + errorThrown
   })
@@ -46,7 +55,7 @@ window.create_new_status = ->
   sendData.name = name.val()
   sendData.link = link.val()
   $.ajax({
-    url: "/statuses/createStatus"
+    url: "/statuses/create"
     method: "post"
     data: sendData
     success: (id)->
