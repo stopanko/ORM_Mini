@@ -3,12 +3,21 @@
   -Status.all.each do |status|
     %li
       =link_to status.name, '/tickets/'+status.link
-.span8
-  %table
-    %thead
-      %tr
-        %th Name
-    %tbody
-      - @tickets.each do |ticket|
+-if @status.user_requests.empty?
+  %h4 Tickets with status #{@status.name} not found
+-else
+  .span8
+    %table
+      %thead
         %tr
-          %td= ticket.name
+          %th Name
+          %th Code
+          %th Text
+          %th Email
+      %tbody
+        - @status.user_requests.each do |ticket|
+          %tr
+            %td= ticket.name
+            %td= ticket.code
+            %td= ticket.text
+            %td= ticket.email

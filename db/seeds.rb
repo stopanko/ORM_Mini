@@ -9,7 +9,7 @@
 # See http://railsapps.github.io/rails-environment-variables.html
 puts 'ROLES'
 YAML.load(ENV['ROLES']).each do |role|
-  Role.find_or_create_by_name({ :name => role }, :without_protection => true)
+  Role.find_or_create_by_name({:name => role}, :without_protection => true)
   puts 'role: ' << role
 end
 puts 'DEFAULT USERS'
@@ -17,7 +17,7 @@ user = User.find_or_create_by_email :name => ENV['ADMIN_NAME'].dup, :email => EN
 puts 'user: ' << user.name
 user.add_role :admin
 puts 'STATUSES'
-YAML.load(ENV['STATUSES']).each do |status|
-  Status.find_or_create_by_name({:name => status}, :without_protection => true)
-  puts 'status: ' << status
+YAML.load(ENV['STATUSES']).each do |name, link|
+  Status.find_or_create_by_name({:name => name, :link => link}, :without_protection => true)
+  puts 'status name: ' << name << ' link: ' << link
 end

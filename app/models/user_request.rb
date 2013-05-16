@@ -1,4 +1,5 @@
 class UserRequest < ActiveRecord::Base
   belongs_to :status
-  attr_accessible :code, :email, :name, :text
+  has_many :comments
+  attr_accessible :email, :name, :text, :code
 end

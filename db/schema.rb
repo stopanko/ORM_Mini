@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512160443) do
+ActiveRecord::Schema.define(:version => 20130515231245) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20130512160443) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
     t.integer  "comment_id"
+    t.string   "name"
   end
 
   add_index "comments", ["userRequest_id"], :name => "index_comments_on_userRequest_id"
@@ -45,15 +46,16 @@ ActiveRecord::Schema.define(:version => 20130512160443) do
   add_index "statuses", ["link"], :name => "index_statuses_on_link", :unique => true
 
   create_table "user_requests", :force => true do |t|
-    t.string   "code"
     t.string   "text"
     t.string   "email"
     t.string   "name"
     t.integer  "status_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "code"
   end
 
+  add_index "user_requests", ["code"], :name => "index_user_requests_on_code", :unique => true
   add_index "user_requests", ["status_id"], :name => "index_user_requests_on_status_id"
 
   create_table "users", :force => true do |t|

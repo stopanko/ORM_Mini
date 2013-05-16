@@ -1,0 +1,7 @@
+%h3 Create Ticket
+= simple_form_for(UserRequest.new) do |f|
+  = f.error_notification
+  = f.input :name, :autofocus => true, :required => true
+  = f.input :email, :required => true
+  = f.input :text, :as => :text,:required => true, :input_html => { :cols => 5, :rows => 5 }
+  = f.button :submit, 'Create', :class => 'btn-primary'

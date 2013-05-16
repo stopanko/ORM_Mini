@@ -1,0 +1,9 @@
+%h3 Add Comment
+= simple_form_for(Comment.new) do |f|
+  = f.error_notification
+  - if @answer != nil
+    %input{:type => "hidden", :name => "comment[userRequest_id]", :class => "text", :value=>@answer.id}
+  = f.input :name, :autofocus => true, :required => true
+  = f.input :email, :required => true
+  = f.input :text, :as => :text,:required => true, :input_html => { :cols => 5, :rows => 5 }
+  = f.button :submit, 'Add Comment', :class => 'btn-primary'
