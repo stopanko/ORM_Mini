@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
   def index
     @comment=Comment.new
   end
@@ -8,7 +7,9 @@ class CommentsController < ApplicationController
     comment=Comment.new
     comment.attributes=(params[:comment])
     if comment.save!
-      redirect_to '/answer/ab00861d9b31522ad232ae75d669a016', :notice => "Your comment added successfully."
+      answer=comment.userRequest
+      UserMailer.ticket_answer_comment_successfully_email(answer).deliver
+      redirect_to '/answer/'+answer.code, :notice => "Your comment added successfully."
     else
       redirect_to :nothing => true, :notice => "Your comment add is fail."
     end

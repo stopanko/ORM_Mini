@@ -12,4 +12,10 @@ class UserMailer < Devise::Mailer
     @url = 'http://0.0.0.0:3000/answer/'+@user.code
     mail(:to => user_request.email, :subject => "Welcome to My ORM MINI Site")
   end
+
+  def ticket_answer_comment_successfully_email(user_request)
+    @user = user_request
+    @url = 'http://0.0.0.0:3000/answer/'+@user.code
+    mail(:to => user_request.email, :subject => "Welcome to My ORM MINI Site")
+  end
 end

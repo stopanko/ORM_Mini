@@ -11,13 +11,13 @@
       %thead
         %tr
           %th Name
-          %th Code
-          %th Text
+          %th Theme
           %th Email
+          %th ShowAnswers
       %tbody
         - @status.user_requests.each do |ticket|
           %tr
             %td= ticket.name
-            %td= ticket.code
-            %td= ticket.text
+            %td= ticket.theme
             %td= ticket.email
+            %td= link_to 'Show', '/answer/'+ticket.code

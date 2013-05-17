@@ -1,5 +1,4 @@
 class UserRequestsController < ApplicationController
-  before_filter :authenticate_user!
 
   def index
     @user_request=UserRequest.new

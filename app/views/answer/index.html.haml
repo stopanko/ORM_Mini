@@ -1,11 +1,12 @@
 %h3 Ticket in status #{@answer.status.name}
+%b Theme: #{@answer.theme}
 %p Creating by #{@answer.name}
 %p
   %b Request text:
 %pre #{@answer.text.to_s}
 -@comments.each do |comment|
-  %div{ :id=>'ooo0', :margin=>'20px', :color=>'red' }
-    %p Username: #{comment.name}
+  %div{:class=>'answer_div'}
+    %p Username: #{comment.name} Email: #{comment.email}
     %b Comment:
     %pre  #{comment.text}
 

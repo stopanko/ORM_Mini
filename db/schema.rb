@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515231245) do
+ActiveRecord::Schema.define(:version => 20130517004941) do
 
   create_table "comments", :force => true do |t|
     t.string   "text"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20130515231245) do
     t.integer  "userRequest_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-    t.integer  "comment_id"
     t.string   "name"
   end
 
@@ -53,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130515231245) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "code"
+    t.string   "theme"
   end
 
   add_index "user_requests", ["code"], :name => "index_user_requests_on_code", :unique => true
