@@ -15,6 +15,7 @@ ORMMini::Application.routes.draw do
   match "/tickets/:page", :controller => 'tickets', :action => 'index'
   match "/tickets", :controller => 'tickets', :action => 'index'
   match "/answer/:page", :controller => 'answer', :action => 'index'
+  match '/statuses/close_ticket', :controller => 'statuses', :action => 'close_ticket'
   #match "/answer/_form_comment", :controller => 'answer', :action => 'add_comment'
   #match "/supports", :controller => 'user_requests', :action => 'index'
 end

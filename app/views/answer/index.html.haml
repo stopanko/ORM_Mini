@@ -1,4 +1,6 @@
 %h3 Ticket in status #{@answer.status.name}
+= button_to "Close", {:controller => :statuses, :action => :close_ticket, :user_request_id => @answer.id }, {:method => :post }
+/%input{:type=>"button",:value=>"close",:onclick=>"close_ticket"}
 %b Theme: #{@answer.theme}
 %p Creating by #{@answer.name}
 %p
@@ -6,7 +8,11 @@
 %pre #{@answer.text.to_s}
 -@comments.each do |comment|
   %div{:class=>'answer_div'}
-    %p Username: #{comment.name} Email: #{comment.email}
+    -if comment.user_id.nil?
+      %p Username: #{comment.name} Email: #{comment.email}
+    -else
+      - user = User.find(comment.user_id)
+      %p #{user.roles.first.name.camelize} name: #{user.name} Email: #{user.email}
     %b Comment:
     %pre  #{comment.text}
 

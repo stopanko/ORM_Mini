@@ -24,4 +24,12 @@ class StatusesController < ApplicationController
     status.save
     render :text => status.id.to_s
   end
+
+  def close_ticket
+    user_request=UserRequest.find(params[:user_request_id])
+    user_request.status=Status.find_by_link('close')
+    user_request.save
+    redirect_to '/answer/'+user_request.code
+  end
+
 end
