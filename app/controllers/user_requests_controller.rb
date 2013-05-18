@@ -1,8 +1,6 @@
 class UserRequestsController < ApplicationController
-
-  def index
-    @user_request=UserRequest.new
-  end
+  before_filter :authenticate_user!
+  authorize_resource :class => :controller
 
   def create
     user_request=UserRequest.new

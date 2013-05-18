@@ -1,4 +1,6 @@
 class TicketsController < ApplicationController
+  before_filter :authenticate_user!
+  authorize_resource :class => :controller
 
   def index
     if params[:page] == nil

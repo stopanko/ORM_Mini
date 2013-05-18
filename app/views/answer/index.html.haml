@@ -1,7 +1,8 @@
 %h3 Ticket in status #{@answer.status.name}
-= button_to "Close", {:controller => :statuses, :action => :close_ticket, :user_request_id => @answer.id }, {:method => :post }
-/%input{:type=>"button",:value=>"close",:onclick=>"close_ticket"}
-%b Theme: #{@answer.theme}
+- if current_user.has_role? :admin or current_user.has_role? :moderator
+  =link_to "Close", {:controller => :statuses, :action => :close_ticket, :user_request_id => @answer.id }, {:method => :post }
+%p
+  %b Theme: #{@answer.theme}
 %p Creating by #{@answer.name}
 %p
   %b Request text:
