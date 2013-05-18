@@ -18,6 +18,13 @@
         .content
           .row
             .span12
+              %p
+                Your name:
+                %strong #{current_user.nil? ? 'Guest' : current_user.name.capitalize}
+              %p
+                -unless current_user.nil?
+                  Your Role:
+                  %strong #{current_user.roles.first.name.capitalize}
               = render 'layouts/messages'
               = yield
           %footer

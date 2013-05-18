@@ -1,5 +1,5 @@
 %h3 Ticket in status #{@answer.status.name}
-- if current_user.has_role? :admin or current_user.has_role? :moderator
+- if (can? :see_link ,:close_ticket) and @answer.status.link != 'close'
   =link_to "Close", {:controller => :statuses, :action => :close_ticket, :user_request_id => @answer.id }, {:method => :post }
 %p
   %b Theme: #{@answer.theme}
@@ -16,5 +16,5 @@
       %p #{user.roles.first.name.camelize} name: #{user.name} Email: #{user.email}
     %b Comment:
     %pre  #{comment.text}
-
-= render "comments/form"
+- if @answer.status.link != 'close' or (can? :see_link ,:close_ticket)
+  = render "comments/form"

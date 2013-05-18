@@ -10,14 +10,20 @@
     %tbody
       - @statuses.each do |status|
         %tr{:status_id =>status.id}
-          %td
-            %input{:type=>"text",:value=>status.name,:size=>"30"}
-          %td
-            %input{:type=>"text",:value=>status.link,:size=>"10"}
-          %td
-            %input{:type=>"button",:value=>"v",:onclick=>"save_status("+status.id.to_s+")"}
-          %td
-            %input{:type=>"button",:value=>"x",:onclick=>"delete_status("+status.id.to_s+")"}
+          - if status.link == 'close' or status.link == 'new'
+            %td
+              =status.name
+            %td
+              =status.link
+          -else
+            %td
+              %input{:type=>"text",:value=>status.name,:size=>"30"}
+            %td
+              %input{:type=>"text",:value=>status.link,:size=>"10"}
+            %td
+              %input{:type=>"button",:value=>"v",:onclick=>"save_status("+status.id.to_s+")"}
+            %td
+              %input{:type=>"button",:value=>"x",:onclick=>"delete_status("+status.id.to_s+")"}
       %tr
         %td
           %input{:type=>"text",:size=>"30",:id=>"new_status_name"}

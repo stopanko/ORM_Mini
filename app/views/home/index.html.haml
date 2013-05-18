@@ -1,4 +1,5 @@
-%h3 Home
-- @users.each do |user|
-  %p
-    User: #{user.name}
+%h3 Hello #{current_user.nil? ? 'Guest' : current_user.name.capitalize }
+-if current_user!=nil and current_user.has_role? :expectation
+  %h3 Your account is in expectation status.
+  %p When admins vote your request registration, you have mail
+

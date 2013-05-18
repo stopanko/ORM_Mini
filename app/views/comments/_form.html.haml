@@ -3,11 +3,10 @@
   = f.error_notification
   - if @answer != nil
     %input{:type => "hidden", :name => "comment[userRequest_id]", :class => "text", :value=>@answer.id}
-  - if user_signed_in?
-    - if current_user.has_role? :admin or current_user.has_role? :moderator
-      %input{:type => "hidden", :name => "comment[user_id]", :class => "text", :value=>current_user.id}
-      %label{:for => "status_id"} Change Status Ticket:
-      = select_tag 'status_id',options_from_collection_for_select(Status.all, 'id', 'name', :selected => @answer.status_id)
+  -if can? :comments , :hidden
+    %input{:type => "hidden", :name => "comment[user_id]", :class => "text", :value=>current_user.id}
+    %label{:for => "status_id"} Change Status Ticket:
+    = select_tag 'status_id',options_from_collection_for_select(Status.all, 'id', 'name', :selected => @answer.status_id)
   - else
     = f.input :name, :autofocus => true, :required => true
     = f.input :email, :required => true

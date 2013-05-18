@@ -5,12 +5,12 @@
       = link_to 'Logout', destroy_user_session_path, :method=>'delete'
     %li
       = link_to 'Edit account', edit_user_registration_path
-    - if current_user.has_role? :admin or current_user.has_role? :moderator
-      - if current_user.has_role? :admin
-        %li
-          = link_to 'Users', users_path
+    - if can? :see_link , :users_statuses
+      %li
+        = link_to 'Users', users_path
       %li
         = link_to 'Statuses', '/statuses'
+    - if can? :see_link , :tickets
       %li
         = link_to 'Tickets', '/tickets'
   - else

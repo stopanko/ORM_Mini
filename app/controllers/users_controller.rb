@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  authorize_resource :class => :controller
 
   def index
     authorize! :index, @user, :message => 'Not authorized as an administrator.'
@@ -29,11 +28,12 @@ class UsersController < ApplicationController
   end
 
   def changeRole
-    user= User.find(params[:user_id])
-    roles=[Role.find(params[:role_id])]
+    user = User.find(params[:user_id])
+    roles = [Role.find(params[:role_id])]
     user.roles = roles
-    user.save
-    UserMailer.role_change_email(user).deliver
+    if user.save!
+      UserMailer.role_change_email(user).deliver
+    end
     render :nothing => true
   end
 end

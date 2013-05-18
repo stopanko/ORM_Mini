@@ -1,17 +1,15 @@
 class UserRequestsController < ApplicationController
-  before_filter :authenticate_user!
-  authorize_resource :class => :controller
 
   def create
-    user_request=UserRequest.new
+    user_request = UserRequest.new
     user_request.attributes = params[:user_request]
-    user_request.status_id=Status.find_by_link('new').id
-    user_request.code=Digest::MD5.hexdigest(Time.now.to_s+user_request.email)
+    user_request.status_id = Status.find_by_link('new').id
+    user_request.code = Digest::MD5.hexdigest(Time.now.to_s+user_request.email)
     if user_request.save!
       UserMailer.ticket_send_successfully_email(user_request).deliver
-      redirect_to user_requests_path, :notice => "Ticket send successfully."
+      redirect_to user_requests_path, :notice => 'Ticket send successfully.'
     else
-      redirect_to user_requests_path, :notice => "Ticket send fail."
+      redirect_to user_requests_path, :notice => 'Ticket send fail.'
     end
   end
 

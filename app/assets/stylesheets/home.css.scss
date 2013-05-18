@@ -4,8 +4,38 @@
 input[type="button"] {
   margin-bottom: 10px;
 }
-div.answer_div{
+
+div.answer_div {
   padding: 20px;
   background: white;
   border: solid 1px darkgrey;
+}
+
+.user_remember_me div, .user_remember_me label, .user_remember_me input {
+  display: inline;
+}
+
+.user_remember_me {
+  padding-left: 20px;
+}
+
+select, input[type = text], input[type = button] {
+  margin-bottom: 0px;
+}
+
+table {
+  border-width: 3px;
+  border-spacing: 1px;
+  border-style: hidden;
+  border-color: red;
+  border-collapse: separate;
+  background-color: rgb(128, 128, 128);
+}
+
+table th, table td {
+  border-width: 3px;
+  padding: 0px;
+  border-style: inset;
+  border-color: white;
+  background-color: white;
 }
