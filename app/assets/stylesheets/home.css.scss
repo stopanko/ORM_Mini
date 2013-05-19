@@ -11,16 +11,21 @@ div.answer_div {
   border: solid 1px darkgrey;
 }
 
-.user_remember_me div, .user_remember_me label, .user_remember_me input {
-  display: inline;
-}
-
 .user_remember_me {
+  div, label, input {
+    display: inline;
+  }
   padding-left: 20px;
 }
 
-select, input[type = text], input[type = button] {
+select {
   margin-bottom: 0px;
+}
+
+input {
+  &[type=text], &[type=button] {
+    margin-bottom: 0px;
+  }
 }
 
 table {
@@ -30,12 +35,11 @@ table {
   border-color: red;
   border-collapse: separate;
   background-color: rgb(128, 128, 128);
-}
-
-table th, table td {
-  border-width: 3px;
-  padding: 0px;
-  border-style: inset;
-  border-color: white;
-  background-color: white;
+  th, td {
+    border-width: 3px;
+    padding: 0px;
+    border-style: inset;
+    border-color: white;
+    background-color: white;
+  }
 }
