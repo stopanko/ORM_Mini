@@ -1,5 +1,5 @@
 h1. Orm Mini.
-  p. Для запуска необходимо:
+   Для запуска необходимо:
     1- скачать с репозитория. с консоли git clone git@github.com:beatm1x/ORM_Mini.git
     2- настроить соединение с бд. файлик config/database.yml
     3- установить все гемы. bundle install при необходимости bundle update
