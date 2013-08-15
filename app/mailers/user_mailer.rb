@@ -3,7 +3,7 @@ class UserMailer < Devise::Mailer
 
   def role_change_email(user)
     @user = user
-    @url = 'http://0.0.0.0:3000/users/sign_in'
+    @url = "http://#{ENV['HOST']}/users/sign_in"
     mail(:to => user.email, :subject => "Welcome to My ORM MINI Site")
   end
 
@@ -21,7 +21,7 @@ class UserMailer < Devise::Mailer
 
   def template_email(user_request)
     @user = user_request
-    @url = "http://0.0.0.0:3000/answer/#{@user.code}"
+    @url = "http://#{ENV['HOST']}/answer/#{@user.code}"
     mail(:to => user_request.email, :subject => "Welcome to My ORM MINI Site")
   end
 end

@@ -7,6 +7,7 @@
 # makes 'Your_Gmail_Username' available as ENV["GMAIL_USERNAME"]
 # Add application configuration variables here, as shown below.
 #
+HOST: 0.0.0.0:3000
 GMAIL_USERNAME: orm1mini@gmail.com
 GMAIL_PASSWORD: qwerty1234567
 ADMIN_NAME: babazina
