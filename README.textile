@@ -1,7 +1,7 @@
 h1. Orm Mini
-Для запуска необходимо:
-  1- скачать с репозитория. с консоли git clone git@github.com:beatm1x/ORM_Mini.git
-  2- настроить соединение с бд. файлик config/database.yml
-  3- установить все гемы. bundle install при необходимости bundle update
-  4- создаем бд rake db:setup
-Вуаля)
+  Для запуска необходимо:
+    1- скачать с репозитория. с консоли git clone git@github.com:beatm1x/ORM_Mini.git
+    2- настроить соединение с бд. файлик config/database.yml
+    3- установить все гемы. bundle install при необходимости bundle update
+    4- создаем бд rake db:setup
+  Вуаля)
